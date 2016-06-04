@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Konferans Yönetim Sistemi</title>
+
+<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="css/animate.css" th:href="@{css/animate.css}"/>
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/giris.css" th:href="@{css/giris.css}"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
+</head>
+<body>
+
+
+<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden"><span id="logo"> <span>Yazar</span></span></h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Merhaba</h2>	
+				<h3 th:text="${Isim}" style="background-color: #FFCC99"></h3>						
+			</div>
+			
+			
+			
+			<form th:action="@{/yazarKonferanslari}" action="yazarKonferanslari" method="post">
+	
+			<button class="btn" type="submit">Konferanslarım</button>
+			<a href="#"></a>	
+</form>
+<br/>
+<br/>
+<form th:action="@{/yazarKonferansaKatil}" action="yazarKonferansaKatil" method="post">
+	
+			<button class="btn" type="submit">Konferansa Katıl</button>
+			<a href="#"></a>	
+</form>
+<br/>
+<br/>
+			<form th:action="@{/cikis}" action="cikis" method="get">
+	
+			<button class="btn" type="submit" style="background-color: #660000">Çıkış Yap</button>
+			<a href="#"></a>	
+</form>
+			
+			
+			
+			</div>
+	</div>
+
+</body>
+</html>
+

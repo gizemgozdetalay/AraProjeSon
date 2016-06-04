@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>Konferans Yönetim Sistemi</title>
+
+	<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="css/animate.css" th:href="@{css/animate.css}"/>
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/giris.css" th:href="@{css/giris.css}"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
+
+	<script type="text/javascript" th:src="@{js/app.js}"></script>
+ 
+ 
+ 
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden"><span id="logo"> <span>Konferans Yönetim Sistemi</span></span></h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Kelime Seç</h2>
+			</div>
+			
+			<div data-toggle="checkboxes" data-max="2">
+			<form id="anahtarlar" name="anahtarlar" th:action="@{/yazarKelimeKayit}" action="yazarKelimeKayit" method="post">
+<table align="center">
+	<tr>
+	
+		<th align="left">Seçiniz</th>		
+		<th align="left">Konferans Anahtar Kelimesi</th>
+	</tr>
+
+	<tr th:each="anahtarKelime : ${anahtarKelimeler}" style="vertical-align: top">
+		<td> 		
+			<input id="anahtar" name="anahtar" type="checkbox" th:value="*{anahtarKelime.anahtarKelimeId}" value="${anahtarKelime.anahtarKelimeId}"/>
+		</td>
+		<td th:text="${anahtarKelime.anahtarKelimeDeger}"></td>		
+	</tr>
+	
+	
+	
+
+</table>
+
+
+
+ <button type="submit" name="id" th:value="*{id}">Anahtar Kelimeleri Kaydet</button>
+
+ 
+ </form>   
+ 
+  
+  
+  </div>
+  
+
+		</div>
+	</div>
+	  
+	  
+	
+
+</body>
+<script type="text/javascript">
+
+//Syntax: checkboxlimit(checkbox_reference, limit)
+checkboxlimit(document.forms.anahtarlar.anahtar, 2)
+</script>
+
+</html>

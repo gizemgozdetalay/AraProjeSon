@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8"/>
+<title>Konferans Yönetim Sistemi</title>
+
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="css/animate.css" th:href="@{css/animate.css}"/>
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/style.css" th:href="@{css/style.css}"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
+</head>
+<body>
+<script th:src="@{js/jquery.js}">
+</script> 
+
+<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden"><span id="logo"><span>Hakem Çağır</span></span></h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Hakem Çağır</h2>
+			</div>
+
+<form th:action="@{/hakemKaydet}" action="hakemKaydet" method="post">
+
+    <fieldset id="field">
+        <div class="exercise">
+        	 <button id="add_hakem">Yeni Hakem Ekle</button>
+        	 <br/>
+        	 <br/>
+        	<label for="isimSoyisim">İsim Soyisim</label>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="email">E-Mail</label>
+			<br/>
+			<input type="text" name="isimSoyisim"/>
+			<input type="text" name="email"/>
+	        <button class="remove">x</button>
+	       
+	    </div>
+    </fieldset>
+            
+    
+
+
+
+
+	<!-- <div class="field">
+		<label for="isimSoyisim">İsim Soyisim</label>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<label for="email">E-Mail</label>
+		<br/>
+		<input type="text" name="isimSoyisim"/>
+		<input type="text" name="email"/>
+		
+		<a href="javascript:;" onclick="addElement();">Yeni Hakem Ekle</a>
+		<br/>
+	</div>
+	<button type="submit">Hakemleri Çağır</button>
+ -->
+ 
+ <button type="submit">Hakemleri Çağır</button>
+</form>
+</div>
+</div>
+<!-- 
+<table>
+	<tr>
+		<th align="left">Hakem İsmi</th>
+		<th align="left">E-posta Adresi</th>	
+	</tr>
+	
+		
+
+</table>
+ -->
+ <script>
+ $('#add_hakem').on('click', function() { 
+    $('#field').append('<div class="exercise"><label for="isimSoyisim">İsim Soyisim</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="email">E-Mail</label><br/><input type="text" name="isimSoyisim"/><input type="text" name="email"/><button class="remove">x</button></div>');
+    return false; //prevent form submission
+});
+
+$('#field').on('click', '.remove', function() {
+    $(this).parent().remove();
+    return false; //prevent form submission
+});
+
+</script>
+
+</body>
+</html>

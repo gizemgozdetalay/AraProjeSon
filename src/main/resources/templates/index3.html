@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Konferans Yönetim Sistemi</title>
+	<link rel="stylesheet" href="css/style3.css" th:href="@{css/style3.css}" type="text/css"/>
+</head>
+<body>
+	<div class="header">
+		<div>
+			<a href="index.html" id="logo"><img src="images/logo11.png" th:href="@{images/logo11.png}" alt="logo"/></a>
+			<ul>
+				<li class="selected">
+					<a href="index3.html" th:href="@{index3.html}"><span>A</span>nasayfa</a>
+				</li>
+				<li>
+					<a href="konferans.html" th:href="@{konferans.html}"><span>H</span>akkımızda</a>
+				</li>
+				
+				<li>
+					<a href="blog.html" th:href="@{blog.html}"><span>B</span>log</a>
+				</li>
+				<li>
+					<a href="staff.html" th:href="@{staff.html}"><span>K</span>ullanıcı</a>
+				</li>
+				<li>
+					<a href="contact.html" th:href="@{contact.html}"><span>İ</span>letişim</a>
+				</li>
+			</ul>
+			<div>
+			
+		<!--  	<form th:action="@{/signin}" action="signin" method="post">
+	
+			<button class="btn" type="submit">Giris Yap</button>
+			<a href="#"></a>	
+	</form>
+	<form action="signup" th:action="@{/signup}" method="post">
+			<button class="btn" type="submit">Uye Ol</button>
+			<a href="#"></a>
+	
+	</form>
+	-->
+		<!-- 	<p>
+					<span>C</span>amp <span>S</span>tarts <span>I</span>n: <span><span>228</span></span> <span>D</span>ays
+				</p> -->	
+			</div>
+		</div>
+	</div>
+	<div class="body">
+		<div>
+			<div class="featured">
+				<img src="images/konferans.jpg" th:src="@{images/konferans.jpg}" alt=""/>
+				<div>
+					<div>
+						<a href="yoneticiGiris.html" th:href="@{yoneticiGiris.html}">Yönetici Girişi</a>
+						<a href="yazarGiris.html" th:href="@{yazarGiris.html}">Yazar Girişi</a>
+						<a href="hakemGiris.html" th:href="@{hakemGiris.html}">Hakem Girişi</a>
+						<a href="signup.html" th:href="@{signup.html}">Kayıt Ol</a>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div>
+					<div>
+						<div class="section">
+							<h2>SAĞLADIĞIMIZ KOLAYLIKLAR</h2>
+							<p>
+								This website template has been designed by  for you, for free. You can replace all this text with your own text.
+							</p>
+							<ul>
+							<li>
+									<p>
+										Hızlı ve Kolay Konferans Yönetim Sistemi
+									</p>
+								</li>
+								<li>
+									<p>
+										Basitleştirilmiş Kullanımı Kolay Arayüz.
+									</p>
+								</li>
+								<li>
+									<p>
+										Akıllı Makale-Hakem Eşleme Sistemi.
+									</p>
+								</li>
+								<li>
+									<p>
+										Üç Farklı Tipte Kullanıcı Kayıt Sistemi.
+									</p>
+								</li>
+								
+							</ul>
+							<ul class="last">
+								<li>
+									<p>
+										Quisque in purus nec purus feugiat consectetur.
+									</p>
+								</li>
+								<li>
+									<p>
+										Fusce et ipsum dolor lorem ante, at sollicitudin libero.
+									</p>
+								</li>
+								<li>
+									<p>
+										Etiam et tellus mi, et semper lectus.
+									</p>
+								</li>
+								<li>
+									<p>
+										Vivamus at justo ut urna porta pulvinar.
+									</p>
+								</li>
+							</ul>
+						</div>
+						<div>
+							<h3>YAKLAŞAN KONFERANSLAR</h3>
+							<ul>
+								<li>
+									<div>
+										<span>11/10/2011</span>
+										<p>
+											This is just a place holder, so you can see what the site would look like.
+										</p>
+									</div>
+								</li>
+								<li>
+									<div>
+										<span>11/19/2011</span>
+										<p>
+											Praesent quis nisl in velit imper diet suscipit a id quam.
+										</p>
+									</div>
+								</li>
+								<li class="last">
+									<div>
+										<span>11/19/2011</span>
+										<p>
+											Nullam vulputate elementum consequat. Fusce leo felis, bibendum.
+										</p>
+									</div>
+								</li>
+							</ul>
+							<a href="events.html" th:href="@{events.html}">View All</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div>
+			<div>
+				<h3>İstatistik</h3>
+				<p >
+					Şu anda sitemizde 
+				</p>
+				<p th:text="${kullanicilar}"/>
+				<p>
+					kayıtlı kullanıcı,
+				</p>
+				<p th:text="${konferanslar}"/>
+				<p>
+					kayıtlı konferans,
+				</p>
+				<p th:text="${makaleler}"/>
+				<p>
+					kayıtlı makale bulunmaktadır.
+				</p>
+			
+			</div>
+			<!--  <div>
+				<h4>LATEST BLOG</h4>
+				<ul>
+					<li>
+						<p>
+							<a href="blog.html" th:href="@{blog.html}">Phasellus parea ut di tincidunt blandit nisi ut pellentesque.</a>
+						</p>
+						<span>11/07/2011</span>
+					</li>
+					<li>
+						<p>
+							<a href="blog.html" th:href="@{blog.html}">Donec dictum semper augue, ut consectetur magna posuere eget.</a>
+						</p>
+						<span>11/03/2011</span>
+					</li>
+					<li>
+						<p>
+							<a href="blog.html" th:href="@{blog.html}">Cum sociis natoque penatibus et magnis dis parturient.</a>
+						</p>
+						<span>11/27/2011</span>
+					</li>
+				</ul>
+			</div>-->
+			<div class="connect">
+				<h4>BİZİ TAKİP ET:</h4>
+				<a href="http://facebook.com" class="facebook">Facebook</a> <a href="http://twitter.com" class="twitter">Twitter</a> <a href="http://google.com" class="google">Google+</a>
+			</div>
+		</div>
+		<div>
+			<p>
+				Konferans Yönetim Sistemi &#169; 2016 | Bütün Hakları Saklıdır.
+			</p>
+		</div>
+	</div>
+</body>
+</html>

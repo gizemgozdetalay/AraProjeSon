@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>Konferans Yönetim Sistemi</title>
+
+	<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="css/animate.css" th:href="@{css/animate.css}"/>
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/giris.css" th:href="@{css/giris.css}"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
+
+
+<script>
+window.location.hash="no-back-button";
+//window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+window.onhashchange=function(){window.location.hash="no-back-button";}
+</script> 
+
+</head>
+
+<body>
+<script th:src="@{js/jquery.js}">
+</script> 
+	<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden"><span id="logo"> <span>Konferans Yönetim Sistemi</span></span></h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Kelime Seç</h2>
+			</div>
+			<form th:action="@{/konferansOnay}" action="/konferansOnay"
+					method="post">
+
+
+		<fieldset id="field">
+        <div class="exercise">
+        	 <button id="add_hakem">Yeni Anahtar Kelime Ekle</button>
+        	 <br/>
+        	 <br/>
+        	<label for="anahtarKelime">Anahtar Kelime</label>		
+			<br/>
+			<input type="text" name="anahtarKelime"/>		
+	        <button class="remove">x</button>
+	       
+	    </div>
+    </fieldset>
+            
+             <button type="submit" name="id" >Anahtar Kelimeleri Kaydet</button>
+
+<!--  <table align="center">
+	<tr>
+	
+		<th align="left">Seçiniz</th>		
+		<th align="left">Konferans Anahtar Kelimesi</th>
+	</tr>
+
+	<tr th:each="icerik : ${icerikler}" style="vertical-align: top">
+		<td> 		
+			<input name="anahtar" type="checkbox" th:value="*{icerik.altBaslik}" value="${icerik.altBaslik}"/>
+		</td>
+		<td th:text="${icerik.altBaslik}"></td>		
+	</tr>
+	
+</table>
+
+ <button type="submit" name="id" th:value="*{konferans.konferansId}">Anahtar Kelimeleri Kaydet</button>
+
+-->
+
+</form>
+		</div>
+	</div>
+	
+	<script>
+ $('#add_hakem').on('click', function() { 
+    $('#field').append('<div class="exercise"><label for="anahtarKelime">Anahtar Kelime</label><br/><input type="text" name="anahtarKelime"/><button class="remove">x</button></div>');
+    return false; //prevent form submission
+});
+
+$('#field').on('click', '.remove', function() {
+    $(this).parent().remove();
+    return false; //prevent form submission
+});
+
+</script>
+</body>
+
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>Konferans Yönetim Sistemi</title>
+
+	<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="css/animate.css" th:href="@{css/animate.css}"/>
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/giris.css" th:href="@{css/giris.css}"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
+	
+	<script>
+window.location.hash="no-back-button";
+//window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+window.onhashchange=function(){window.location.hash="no-back-button";}
+</script> 
+</head>
+
+<body>
+	<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden"><span id="logo"> <span>KYS</span></span></h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Konferans Seç</h2>
+			</div>
+			
+						
+			
+			
+               <!--   <div th:if="${param.logout}" class="alert alert-success"> 
+                    You have been logged out.
+                </div>-->
+			<form th:action="@{/hakemKonferansSecimi}" action="hakemKonferansSecimi" method="POST">
+	<table align="center" border="1" style="width:300px">
+	<tr>
+		<th align="left">Seçiniz</th>		
+		<th align="left"> Konferans Id</th>
+		<th align="left">Konferans Ismi</th>
+	</tr>
+	<tr th:each="konferans : ${konferanslar}">
+		<td> 		
+			<input name="konferans" type="radio" th:value="*{konferans.konferansId}"/>
+		</td>
+        <td th:text="${konferans.konferansId}">Id Burda</td>
+        <td th:text="${konferans.konferansIsmi}">isim</td>
+        
+     </tr>	
+     </table>
+ 		<br/>
+ 		<br/>
+      <button type="submit">Konferansı Seç</button>
+      <br/>
+      <br/>
+
+ </form> 
+ <form th:action="@{/hakem}" action="/hakem" method="get">
+ 			<button type="submit">Hakem Sayfama Dön</button>
+ 
+ </form>  
+ 		
+		</div>
+	</div>
+</body>
+
+</html>

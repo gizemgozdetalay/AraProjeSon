@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Konferans Yönetim Sistemi</title>
+
+<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="css/animate.css" th:href="@{css/animate.css}"/>
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/profil.css" th:href="@{css/profil.css}"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
+</head>
+<body>
+
+<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden"><span id="logo"> <span>Değerlendirme</span></span></h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+						
+			</div>
+
+<form th:action="@{/degerlendirmeKaydet}" action="degerlendirmeKayder" method="post">
+<input type="hidden" name ="makaleUzanti" value="${makale.makaleUzanti}"/>
+<input type="hidden" name ="makaleId" value="${makale.makaleId}"/>
+
+<hr/>
+
+<fieldset id="degerlendirme">
+	<legend>Değerlendir</legend>
+	<div class="field">
+	<label class="plain">Tavsiye:</label>
+	<label>&nbsp;</label>
+	<fieldset class="radio">
+	<label><input type="radio" name="recommendation" id="recommendation1" value="0"/>Kesinlikle Ret: Konferansa uygunsuz içerik</label>
+	<br/>
+	<label><input type="radio" name="recommendation" id="recommendation2" value="10"/>Muhtemel Ret: İçerikte temel kusurlar veya yazım ve sunumda zayıflık</label>
+	<br/>
+	<label><input type="radio" name="recommendation" id="recommendation3" value="20"/>Reddedilebilir: Çok kusurlu değil ancak kabul edilebilir hale getirmek için büyük çaba harcanmalı.</label>
+	<br/>
+	<label><input type="radio" name="recommendation" id="recommendation4" value="30"/>Kabul Edilebilir: İçerik hakları mevcut ancak doğruluk, açıklık, bütünlük ve yazım zamanla geliştirilebilir.</label>
+	<br/>
+	<label><input type="radio" name="recommendation" id="recommendation5" value="40"/>Muhtemel Kabul:İçerik, yazım ve sunum profesyonel ilkelere uygundur. Tavsiye edilen iyileştirmelerle kabul edilebilir.</label>
+	<br/>
+	<label><input type="radio" name="recommendation" id="recommendation6" value="50"/>Mutlaka Kabul Edilmeli: Sunum için olağanüstü</label>
+	<br/>	
+	</fieldset>
+	</div>
+	
+	<div class="field">
+	<label class="plain">Gönderi Kategorisi:</label>
+	<label>&nbsp;</label>
+	<fieldset class="radio">
+	<label><input type="radio" name="category" id="category1" value="5"/>Son derece teorik</label>
+	<br/>
+	<label><input type="radio" name="category" id="category2" value="10"/>Teoriğe doğru gitmekte</label>
+	<br/>
+	<label><input type="radio" name="category" id="category1" value="15"/>Teorik ve pratik bilgi dengeli</label>
+	<br/>
+	<label><input type="radio" name="category" id="category1" value="10"/>Pratiğe doğru gitmekte</label>
+	<br/>
+	<label><input type="radio" name="category" id="category1" value="5"/>Son derece pratik</label>	
+	
+	</fieldset>
+	</div>
+
+	<div class="field">
+	<label class="plain">Ekteki Bilgilerin Genel Değeri:</label>
+	<label>&nbsp;</label>
+	<fieldset class="radio">
+	<label><input type="radio" name="value" id="value1" value="18"/>Yeni bilgi</label>
+	<br/>
+	<label><input type="radio" name="value" id="value2" value="15"/>Mevcut bilginin değerli bir kabulü</label>
+	<br/>
+	<label><input type="radio" name="value" id="value3" value="12"/>Mevcut anlayışa getirilen bir netlik</label>
+	<br/>
+	<label><input type="radio" name="value" id="value4" value="9"/>Yeni bir bakıç açısı, bir konu yada sorunun tanımı</label>
+	<br/>
+	<label><input type="radio" name="value" id="value5" value="6"/>Çok değerli bilgiler yok</label>
+	<br/>
+	<label><input type="radio" name="value" id="value6" value="3"/>Diğer</label>
+	<br/>
+	</fieldset>
+	
+	</div>
+	
+	<div class="field">
+	<label class="plain">Yorumcunun konu ile ilgili bilgisi</label>
+	<label>&nbsp;</label>
+	<fieldset class="radio">
+	<label><input type="radio" name="familiar" id="familiar1" value="0"/>Düşük</label>
+	<br/>
+	<label><input type="radio" name="familiar" id="familiar2" value="1"/>Orta</label>
+	<br/>
+	<label><input type="radio" name="familiar" id="familiar3" value="2"/>Yüksek</label>
+	<br/>	
+	</fieldset>
+	</div>
+	
+	<div class="field">
+	<label class="plain">Sizce bu makale en iyi makale için olmak için aday olabilir mi?</label>
+	<label>&nbsp;</label>
+	<fieldset class="radio">
+	<label><input  type="radio" name="bpcandidate" id="bpcandidate1" value="6" />Evet</label>
+	<br/>
+	<label><input  type="radio" name="bpcandidate" id="bpcandidate2" value="0" />Hayır</label>
+	<br/>
+	<label><input  type="radio" name="bpcandidate" id="bpcandidate3" value="3" />Kararsızım</label>
+	<br/>	
+	</fieldset>	
+	</div>
+	
+	<div class="field">
+	<label class="plain">Sizce makalenin uzunluğu yeterli mi?</label>
+	<label>&nbsp;</label>
+	<fieldset class="ratio">
+	<label><input  type="radio" name="lenght" id="lenght1" value="6"/>Evet</label>
+	<br/>
+	<label><input  type="radio" name="lenght" id="lenght2" value="0"/>Hayır</label>
+	<br/>
+	<label><input  type="radio" name="lenght" id="lenght3" value="3"/>Kararsızım</label>
+	<br/>
+	</fieldset>
+	</div>
+
+
+</fieldset>
+<br/>
+<br/>
+<p>Değerlendirmeyi kaydet butonunu seçmediğiniz sürece değerlendirmeniz kaydedilmez!</p>
+<label><input type="radio" name="kayit" id="kayit" value="dolu"/>Değerlendirmeyi Kaydet</label>
+<br/>
+<br/>
+<button name="makale" th:value="*{makale}" type="submit">İşlemi Bitir</button>
+
+</form>
+
+</div>
+</div>
+
+</body>
+</html>

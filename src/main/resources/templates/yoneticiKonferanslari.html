@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Konferans Yönetim Sistemi</title>
+
+<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="css/animate.css" th:href="@{css/animate.css}"/>
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/profil.css" th:href="@{css/profil.css}"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
+	
+<!-- <script>
+window.location.hash="no-back-button";
+window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+window.onhashchange=function(){window.location.hash="no-back-button";}
+</script> 
+	 -->	
+</head>
+<body>
+
+	<!--  <nav role="navigation">
+    <ul>
+        <li><a href="/">Home</a></li>
+       <li><a href="/items/add">Add item</a></li> 
+    </ul>
+</nav>	
+<div> -->
+
+
+
+<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden"><span id="logo"> <span>Yönetici</span></span></h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Konferanslarım</h2>				
+			</div>
+
+<table align="center" border="1" style="width:300px">
+	<tr>
+	
+		<th align="center"> Konferans Id</th>
+		<th align="center">Konferans Ismi</th>
+		<th align="center">Başlama Tarihi</th>
+		<th align="center">Bitiş Tarihi</th>
+		<th align="center">Mekan</th>
+		<th align="center">Hakem - Makale Eşle</th>
+	</tr>
+	
+	<tr th:each="konferans : ${konferanslar}">
+        <td th:text="${konferans.konferansId}">Id Burda</td>
+        <td th:text="${konferans.konferansIsmi}">isim</td> 
+        <td th:text="${konferans.konferansBaslamaTarihi}"></td>
+        <td th:text="${konferans.konferansBitisTarihi}" ></td>
+        <td th:text="${konferans.konferansMekani}"></td>
+        
+        <td><a  th:href="@{|eslemeYap?id=${konferans.konferansId}|}">Eşleme Yap</a></td>
+       <!--  <td><a th:href="@{|eslemeYap?uzanti=${makale.makaleUzanti}|}">Eşleme Yap</a></td>  -->   
+       <!--   <td>
+       <form th:action="@{/hakemCagir}" action="hakemCagir" method="post">
+       // <input name="konferans" type="button" th:value="*{konferans.konferansId}"/>
+       </form> 
+        </td>--> 
+        
+       
+     </tr>
+     <tr th:each="konferans : ${eslemeYapilanKonferanslar}">
+     		 <td th:text="${konferans.konferansId}">Id Burda</td>
+      		  <td th:text="${konferans.konferansIsmi}">isim</td> 
+      		   <td th:text="${konferans.konferansBaslamaTarihi}"></td>
+        	<td th:text="${konferans.konferansBitisTarihi}" ></td>
+        <td th:text="${konferans.konferansMekani}"></td>
+      		  <td><a th:href="@{|eslemeGoster?id=${konferans.konferansId}|}">Eşlemeyi Göster</a> </td>
+      		   
+     </tr>
+     
+        
+</table>
+
+
+<form th:action="@{/yonetici}" action="/yonetici" method="get">
+			<br/>
+			<br/>
+ 			<button type="submit">Yönetici Sayfama Dön</button>
+ 
+ </form>
+</div>
+
+	</div>
+	
+	
+	
+
+
+
+</body>
+</html>

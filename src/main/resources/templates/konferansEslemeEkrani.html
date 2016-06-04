@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Konferans Yönetim Sistemi</title>
+
+ <!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="css/animate.css" th:href="@{css/animate.css}"/>
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/esleme.css" th:href="@{css/esleme.css}"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
+</head>
+<body>
+
+
+<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden"><span id="logo"> <span>Eşlemeler</span></span></h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Makale Eşlemeleri</h2>				
+			</div>
+
+<form th:action="@{/makaleOnayla}" action="/makaleOnayla" method="get">
+<table align="center" border="1" style="width:300px">
+	
+	<tr>
+		<th align="left">Seçiniz</th>
+		<th align="left">Değerlendirme Sonucu</th>
+		<th align="left">Makalenin İsmi</th>
+		<th align="left">Hakemin İsmi</th>
+		<th align="left">Hakemin Çalıştığı Kurum</th>
+		<th align="left">Makale Yazarının İsmi</th>
+		<th align="left">Makale Yazarının Çalıştığı Kurum</th>
+		
+		
+	</tr>
+	
+	<tr th:each="esleme : ${trueEslemeler}">
+	
+			<td>
+				Daha Önce Onaylandı
+			</td>
+			<td th:text="${esleme.degerlendirme.puan}">Puanı Budur</td>
+			<td><a th:text="${esleme.eslemeMakale.makaleIsmi}" th:href="@{|makaleGoster?isim=${esleme.eslemeMakale.makaleIsmi}|}"> </a></td>
+			<!--  <td><a th:href="@{|eslemeYap?id=${konferans.konferansId}|}">Eşleme Yap</a></td>  -->
+     		 <td th:text="${esleme.eslemeHakem.hakemler.isim}">Id Burda</td>
+     		  <td th:text="${esleme.eslemeHakem.hakemler.kurum}">Id Burda</td>
+     		   <td th:text="${esleme.eslemeMakale.yazarMakale.yazarlar.isim}">Id Burda</td>
+      		  <td th:text="${esleme.eslemeMakale.yazarMakale.yazarlar.kurum}">isim</td> 
+	
+	
+	
+	</tr>
+	
+	
+	<tr th:each="esleme : ${eslesenOnaylilar}">
+			<td>
+				<input name="makale" type="checkbox" th:value="*{esleme.eslemeMakale.makaleId}" value="${esleme.eslemeMakale.makaleId}"/>
+			</td>
+			<td th:text="${esleme.degerlendirme.puan}">Puanı Budur</td>
+			<td th:text="${esleme.eslemeMakale.makaleIsmi}"></td>
+     		 <td th:text="${esleme.eslemeHakem.hakemler.isim}">Id Burda</td>
+     		  <td th:text="${esleme.eslemeHakem.hakemler.kurum}">Id Burda</td>
+     		   <td th:text="${esleme.eslemeMakale.yazarMakale.yazarlar.isim}">Id Burda</td>
+      		  <td th:text="${esleme.eslemeMakale.yazarMakale.yazarlar.kurum}">isim</td> 
+      		  <!-- <td><a th:href="@{|eslemeGoster?id=${konferans.konferansId}|}">Eşlemeyi Göster</a> </td>  -->
+      		   
+     </tr>
+     
+     <tr th:each="esleme : ${eslesenOnaysizlar}">
+     		<td>Seçim Yapılamaz</td>
+     		<td>Puanı Yok</td>
+			<td th:text="${esleme.eslemeMakale.makaleIsmi}"></td>
+     		 <td th:text="${esleme.eslemeHakem.hakemler.isim}">Id Burda</td>
+     		  <td th:text="${esleme.eslemeHakem.hakemler.kurum}">Id Burda</td>
+     		   <td th:text="${esleme.eslemeMakale.yazarMakale.yazarlar.isim}">Id Burda</td>
+      		  <td th:text="${esleme.eslemeMakale.yazarMakale.yazarlar.kurum}">isim</td> 
+      		  <!-- <td><a th:href="@{|eslemeGoster?id=${konferans.konferansId}|}">Eşlemeyi Göster</a> </td>  -->
+      		   
+     </tr>	
+	
+</table>
+	<br/>
+	
+		 <button type="submit" >Makaleleri Onayla</button>	
+	</form>
+
+	</div>
+	</div>
+
+</body>
+</html>

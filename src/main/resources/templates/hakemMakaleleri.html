@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Konferans Yönetim Sistemi</title>
+
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="css/animate.css" th:href="@{css/animate.css}"/>
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/style.css" th:href="@{css/style.css}"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
+</head>
+<body>
+
+
+<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden"><span id="logo"><span>Makalelerim</span></span></h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Makale Seç</h2>
+			</div>
+			
+  <form th:action="@{/makaleDegerlendir}" action="makaleDegerlendir" method="post">
+ <div align="center">
+<table border="1" style="width:300px">
+	<tr>
+				
+		<th align="left">Makalenin Ismi</th>
+		<th align="left">Makaleyi İndir</th>
+		<th align="left">Makaleyi Değerlerdir</th>
+		
+	</tr>
+	<tr th:each="makale : ${degerlenmemisMakaleler}">
+	
+		<!--  <td> 		
+			<input name="uzanti" type="radio" th:value="*{makale.makaleUzanti}"/>
+		</td> -->
+        <td th:text="${makale.makaleUzanti}">Makale Uzanti</td>
+        <td><a th:href="@{|makaleIndir?uzanti=${makale.makaleUzanti}|}"><img src="images/indir2.png" th:href="@{images/indir2.png}" alt="logo"/></a></td>
+   		<td><a th:href="@{|makaleDegerlendir?uzanti=${makale.makaleUzanti}|}"><img src="images/rev.png" th:href="@{images/rev.png}" alt="logo"/></a></td>
+       
+       
+           
+       <!--    <td><button name="uzanti" th:value="*{makale.makaleUzanti}" type="submit"></button></td>
+        href="topics.html?getId=${thread.id}"
+        th:href="@{/download?uzanti=*{makale.makaleUzanti}}"
+        	<td> <a  href="/download?uzanti=*{makale.makaleUzanti}" th:value="*{makale.makaleUzanti}">Download link</a></td>
+        -->
+        
+     </tr>	
+     
+     <tr th:each="makale: ${degerlenmisMakaleler}">
+     	 <td th:text="${makale.makaleUzanti}">Makale Uzanti</td>
+     	 <td><a th:href="@{|makaleIndir?uzanti=${makale.makaleUzanti}|}"><img src="images/indir2.png" th:href="@{images/indir2.png}" alt="logo"/></a></td>
+     	 <td><img src="images/redicon2.png" th:href="@{images/redicon2.png}" alt="logo"/></td>
+     
+     </tr>
+     </table>
+    
+    </div>   
+      
+	
+			
+			
+</form>			
+
+
+</div>
+	</div>
+
+
+       
+
+</body>
+</html>

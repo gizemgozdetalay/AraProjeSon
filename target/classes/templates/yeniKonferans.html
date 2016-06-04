@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<title>Konferans Yönetim Sistemi</title>
+
+<!-- Google Fonts -->
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900'
+	rel='stylesheet' type='text/css' />
+
+<link rel="stylesheet" href="css/animate.css"
+	th:href="@{css/animate.css}" />
+<!-- Custom Stylesheet -->
+<link rel="stylesheet" href="css/kayit.css" th:href="@{css/kayit.css}" />
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	
+
+	
+</head>
+
+<body>
+	<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden">
+				<span id="logo"><span>Konferans</span></span>
+			</h1>
+		</div>
+		<div style="width: 80%">
+
+			<div class="login-box animated fadeInUp">
+				<div class="box-header">
+					<h2>Konferans</h2>
+				</div>
+				
+				<form th:action="@{/yonetici}" action="/yonetici" method="get">
+ 			<button type="submit">Yönetici Sayfama Dön</button>
+ 
+ </form>
+				<form th:action="@{/konferansKayit}" action="/konferansKayit"
+					method="post" id="konferansKayit">
+					<input type="hidden" name="id" /> 
+					<label for="isim">Konferans	İsim</label> 
+					<br /> 
+					<input type="text" name="konferans_isim" /> 
+					<br />
+					<label for="konferansKisaltma">Konferans Adının Kısaltması</label> 
+					<br /> 
+					<input type="text" name="konferansKisaltma" /> 
+					<br />
+					<label for="soyisim">Web Sitesi</label> 
+					<br /> 
+					<input type="text" name="web_adres" /> 
+					<br /> 
+					<label for="email">Mekan</label>
+					 <br />
+					<input type="text" name="konferans_mekan" /> 
+					<br /> 
+					<label	for="sifre">Konferans Baslama Tarihi</label> 
+					<br /> 
+					<input type="date" name="konferans_baslama" /> 
+					<br /> 
+					<label for="kurum">Konferans Bitiş Tarihi</label> 
+					<br /> 
+					<input	type="date" name="konferans_bitis" />
+					 <br />
+					<label for="max">Hakemlerin Alacağı MAksimum Makale Sayısı</label>
+					<br/>
+					<input type="number" name="maxMakaleSayisi"/>
+					<br/>
+					<tr>
+						<td class="right"><span>Araştırma Alanları&nbsp;(*):</span></td>
+						<td>
+							<table style="margin-top: 7pt; border-collapse: collapse">
+								<tbody>
+									<tr style="vertical-align: top">
+										<td style="padding-right: 12pt; border: solid 1px #888">
+											<label> <input name="area" value="Arkeoloji ve Antropoloji" type="checkbox" />Arkeoloji ve Antropoloji
+										</label>
+										</td>
+										<td style="padding-right: 12pt; border: solid 1px #888">
+											<label><input name="area" type="checkbox" value="Biyoloji Bilimleri" />Biyoloji Bilimleri
+												</label>
+										</td>
+										<td style="padding-right: 12pt; border: solid 1px #888">
+											<label><input value="Bilgisayar Bilimleri" type="checkbox" name="area" />Bilgisayar Bilimleri</label>
+										</td>
+										<td style="padding-right: 12pt; border: solid 1px #888">
+											<label><input name="area" value="Elektrik ve Mekanik Mühendisliği" type="checkbox" />Elektrik ve Mekanik Mühendisliği</label>
+										</td>
+									</tr>
+									<tr style="vertical-align: top">
+
+										<td style="padding-right: 12pt; border: solid 1px #888">
+											<label><input name="area" type="checkbox" value="Hukuk" />Hukuk</label>
+										</td>
+										<td style="padding-right: 12pt; border: solid 1px #888">
+											<label><input name="area" type="checkbox" value="Felsefe" />Felsefe</label>
+										</td>
+										<td style="padding-right: 12pt; border: solid 1px #888">
+											<label><input type="checkbox" value="Din" name="area" />Din</label>
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<br/>
+					<button type="submit">Oluştur</button>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+	$(document).ready(function() {
+		$('#logo').addClass('animated fadeInDown');
+		$("input:text:visible:first").focus();
+	});
+	$('#username').focus(function() {
+		$('label[for="username"]').addClass('selected');
+	});
+	$('#username').blur(function() {
+		$('label[for="username"]').removeClass('selected');
+	});
+	$('#password').focus(function() {
+		$('label[for="password"]').addClass('selected');
+	});
+	$('#password').blur(function() {
+		$('label[for="password"]').removeClass('selected');
+	});
+</script>
+
+</html>
